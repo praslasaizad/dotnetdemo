@@ -5,6 +5,7 @@
 
 trigger:
 - develop
+- features/*
 
 pool:
   name: Sam
