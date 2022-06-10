@@ -19,6 +19,23 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
+steps:
+- script: dotnet publish --configuration $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)
+  displayName: 'publishing'
+
+- task: Npm@1
+  displayName: 'Install dependencies'
+  inputs:
+    command: 'install'
+    workingDir: 'ClientApp'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+
 - task: DotNetCoreCLI@2
   displayName: Publish Projects
   inputs:
