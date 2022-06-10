@@ -10,7 +10,7 @@ trigger:
 - master
 
 pool:
-  name: Sam
+  name: Demo
 
 variables:
   buildConfiguration: 'Release'
