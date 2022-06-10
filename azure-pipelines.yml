@@ -19,7 +19,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-steps:
 - script: dotnet publish --configuration $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)
   displayName: 'publishing'
 
